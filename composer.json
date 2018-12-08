@@ -1,0 +1,34 @@
+{
+  "name": "leocolomb/wp-auto-links",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "Adds automatically internal and external links to list of keywords",
+  "homepage": "https://github.com/LeoColomb/wp-auto-links/",
+  "keywords": [
+    "wordpress",
+    "seo",
+    "auto-links",
+    "auto-linker",
+    "generator"
+  ],
+  "support": {
+    "issues": "https://github.com/LeoColomb/wp-auto-links/issues"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "require": {
+    "php": ">=7.2",
+    "composer/installers": "^1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.5.1"
+  },
+  "scripts": {
+    "test": [
+      "phpcs"
+    ]
+  }
+}
