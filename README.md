@@ -19,6 +19,7 @@
   * PHP 7.2+ (⚠ **requirement**)
   * WordPress 5.0+ (⚠ **requirement**)
   * Object Cache handler (⚠ **requirement**)
+  * Cron
 
 ## Installation
 
@@ -26,7 +27,11 @@
 $ composer require leocolomb/wp-auto-links
 ```
 
-
 ## License
 
 ISC © [Léo Colombaro](https://colombaro.fr)
+
+* Arjan Olsder for [WPA SEO Auto Linker](https://wordpress.org/plugins/wpa-seo-auto-linker/)
+* Maarten Brakkee for [SEO Auto Links](https://wordpress.org/plugins/seo-auto-links/)
+* Chris Lynch & Vladimir Prelovac for [SEO Smart Links](https://wordpress.org/plugins/seo-automatic-links/)
+
