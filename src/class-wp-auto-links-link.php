@@ -32,7 +32,7 @@ class WP_Auto_Links_Link
     public function increment(): bool
     {
         $this->rest--;
-        return $this->rest > 0;
+        return $this->rest >= 0;
     }
 
     public function has_keyword(string $match): bool
