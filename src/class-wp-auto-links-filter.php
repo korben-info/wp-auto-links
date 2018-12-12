@@ -188,7 +188,7 @@ class WP_Auto_Links_Filter
             $text
         );
 
-        if ($this->on_heading) {
+        if (!$this->on_heading) {
             $text = preg_replace_callback('|(<h\d[^>]*>)((?:(?!<\/h).)*)(<\/h\d>)|si', function ($matches) {
                 return $matches[1] . $this->remove_spec_char($matches[2]) . $matches[3];
             }, $text);
