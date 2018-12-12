@@ -45,7 +45,7 @@ if (isset($_POST['submitted'])) {
     check_admin_referer($instance::DOMAIN);
 
     foreach ($integer_options + $boolean_options as $option_name) {
-        $val = $_POST[$option_name] ?? 0;
+        $val = (isset($_POST[$option_name]) && !empty($_POST[$option_name])) ? $_POST[$option_name] : 0;
         $options[$option_name] = is_numeric($val) ? (int) $val : 1;
     }
 
