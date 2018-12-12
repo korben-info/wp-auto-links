@@ -130,7 +130,7 @@ class WP_Auto_Links_Filter
     public function process(string $text): string
     {
         if (!$this->on_heading) {
-            $text = preg_replace_callback('|(<h\d[^>]*>)(.*)(</h\d>)|si', function ($matches) {
+            $text = preg_replace_callback('|(<h\d[^>]*>)((?:(?!<\/h).)*)(<\/h\d>)|si', function ($matches) {
                 return $matches[1] . $this->add_spec_char($matches[2]) . $matches[3];
             }, $text);
         }
@@ -189,7 +189,7 @@ class WP_Auto_Links_Filter
         );
 
         if ($this->on_heading) {
-            $text = preg_replace_callback('/(<h\d[^>]*>)(.*)(</h\d>)/si', function ($matches) {
+            $text = preg_replace_callback('/(<h\d[^>]*>)((?:(?!<\/h).)*)(<\/h\d>)/si', function ($matches) {
                 return $matches[1] . $this->remove_spec_char($matches[2]) . $matches[3];
             }, $text);
             $text = stripslashes($text);
