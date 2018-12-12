@@ -55,7 +55,7 @@ class WP_Auto_Links_Builder
     }
 
     /**
-     * @param string $type Single type: post or page.
+     * @param string $type Single type: posts or pages.
      * @param string $alias WordPress alias of the type.
      */
     protected static function singles(string $type, string $alias): void
@@ -108,7 +108,7 @@ SQL;
     }
 
     /**
-     * @param string $type Term type: tag or categorie (not category!).
+     * @param string $type Term type: tags or categories.
      * @param string $alias WordPress alias of the type.
      */
     protected static function terms(string $type, string $alias): void
