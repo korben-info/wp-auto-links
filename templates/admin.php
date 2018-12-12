@@ -45,7 +45,8 @@ if (isset($_POST['submitted'])) {
     check_admin_referer($instance::DOMAIN);
 
     foreach ($integer_options + $boolean_options as $option_name) {
-        $options[$option_name] = sanitize_key($_POST[$option_name] ?? 0);
+        $val = $_POST[$option_name] ?? 0;
+        $options[$option_name] = is_numeric($val) ? (int) $val : 1;
     }
 
     $options['keywords'] = strip_tags($_POST['keywords']);
@@ -259,7 +260,7 @@ $options['min_term_usage'] = not_null($options['min_term_usage'], 1);
                     </label>
                 </th>
                 <td>
-                    <input type="text" name="min_term_usage" id="min_term_usage" size="2" value="<?= $options['min_term_usage']; ?>"/>
+                    <input type="number" name="min_term_usage" id="min_term_usage" size="2" value="<?= $options['min_term_usage']; ?>"/>
                     <p class="description">
                         <?php _e('Only link categories and tags that have been used the above number of times or more.', $instance::DOMAIN); ?>
                     </p>
@@ -315,7 +316,7 @@ $options['min_term_usage'] = not_null($options['min_term_usage'], 1);
                     </label>
                 </th>
                 <td>
-                    <input type="text" name="max_links" id="max_links" size="2" value="<?= $options['max_links']; ?>"/>
+                    <input type="number" name="max_links" id="max_links" size="2" value="<?= $options['max_links']; ?>"/>
                     <p class="description">
                         <?php _e('You can limit the maximum number of different links that will be generated per post. Set to 0 for no limit.', $instance::DOMAIN); ?>
                     </p>
@@ -328,7 +329,7 @@ $options['min_term_usage'] = not_null($options['min_term_usage'], 1);
                     </label>
                 </th>
                 <td>
-                    <input type="text" name="max_single_keyword" id="max_single_keyword" size="2" value="<?= $options['max_single_keyword']; ?>"/>
+                    <input type="number" name="max_single_keyword" id="max_single_keyword" size="2" value="<?= $options['max_single_keyword']; ?>"/>
                     <p class="description">
                         <?php _e('You can limit the maximum number of links created with the same keyword. Set to 0 for no limit.', $instance::DOMAIN); ?>
                     </p>
@@ -341,7 +342,7 @@ $options['min_term_usage'] = not_null($options['min_term_usage'], 1);
                     </label>
                 </th>
                 <td>
-                    <input type="text" name="max_single_url" id="max_single_url" size="2" value="<?= $options['max_single_url']; ?>"/>
+                    <input type="number" name="max_single_url" id="max_single_url" size="2" value="<?= $options['max_single_url']; ?>"/>
                     <p class="description">
                         <?php _e('Limit number of same URLs the plugin will link to. Works only when Max Keyword Links above is set to 1. Set to 0 for no limit.', $instance::DOMAIN); ?>
                     </p>
