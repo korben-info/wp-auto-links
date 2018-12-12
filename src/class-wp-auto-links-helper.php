@@ -177,9 +177,9 @@ class WP_Auto_Links_Helper
     /**
      * Get helper options.
      *
-     * @return array
+     * @return array|bool
      */
-    public function get_options(): array
+    public function get_options()
     {
         if (empty($this->options)) {
             $this->options = get_option(self::DOMAIN);

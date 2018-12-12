@@ -15,6 +15,7 @@
 * Provides simple and standard interfaces
   * Clean & clear admin page
   * Useful CLI commands
+* Respect web standards
 * Uses latest technologies to reduce load impact
   * PHP 7.2+ (⚠ **requirement**)
   * WordPress 5.0+ (⚠ **requirement**)
