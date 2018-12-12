@@ -56,14 +56,15 @@ class WP_Auto_Links_Builder
 
     /**
      * @param string $type Single type: post or page.
+     * @param string $alias WordPress alias of the type.
      */
-    protected static function singles(string $type): void
+    protected static function singles(string $type, string $alias): void
     {
         global $wpdb;
 
         $helper = WP_Auto_Links_Helper::get_instance();
 
-        if (!$helper->get_option("{$type}s_enable")) {
+        if (!$helper->get_option("{$type}_enable")) {
             return;
         }
 
@@ -75,7 +76,7 @@ class WP_Auto_Links_Builder
         $query = <<<SQL
 SELECT  `ID`, `post_title` FROM `$wpdb->posts` 
 WHERE `post_status` = 'publish'
-  AND `post_type` = '$type'
+  AND `post_type` = '$alias'
   AND CHAR_LENGTH(`post_title`) BETWEEN 3 AND 50
   $ignore
 ORDER BY CHAR_LENGTH(`post_title`) DESC LIMIT 1000;
@@ -95,7 +96,7 @@ SQL;
      */
     public static function posts(): void
     {
-        self::singles('post');
+        self::singles('posts', 'post');
     }
 
     /**
@@ -103,18 +104,19 @@ SQL;
      */
     public static function pages(): void
     {
-        self::singles('page');
+        self::singles('pages', 'page');
     }
 
     /**
      * @param string $type Term type: tag or categorie (not category!).
+     * @param string $alias WordPress alias of the type.
      */
-    protected static function terms(string $type): void
+    protected static function terms(string $type, string $alias): void
     {
         global $wpdb;
 
         $helper = WP_Auto_Links_Helper::get_instance();
-        if (!$helper->get_option("{$type}s_enable")) {
+        if (!$helper->get_option("{$type}_enable")) {
             return;
         }
 
@@ -123,12 +125,11 @@ SQL;
             $ignore = "AND `$wpdb->terms`.`term_id` NOT IN ($ignore)";
         }
 
-        $query_type = $type === 'tag' ? 'post_tag' : 'category';
         $min_usage = $helper->get_option('min_term_usage');
         $query = <<<SQL
 SELECT `$wpdb->terms`.`term_id`, `$wpdb->terms`.`name` FROM `$wpdb->terms`
 LEFT JOIN `$wpdb->term_taxonomy` ON `$wpdb->terms`.`term_id` = `$wpdb->term_taxonomy`.`term_id`
-WHERE `$wpdb->term_taxonomy`.`taxonomy` = '$query_type'
+WHERE `$wpdb->term_taxonomy`.`taxonomy` = '$alias'
   AND CHAR_LENGTH(`$wpdb->terms`.`name`) BETWEEN 3 AND 30
   AND `$wpdb->term_taxonomy`.`count` >= $min_usage
   $ignore
@@ -149,7 +150,7 @@ SQL;
      */
     public static function categories(): void
     {
-        self::terms('categorie');
+        self::terms('categories', 'category');
     }
 
     /**
@@ -157,6 +158,6 @@ SQL;
      */
     public static function tags(): void
     {
-        self::terms('tag');
+        self::terms('tags', 'post_tag');
     }
 }
