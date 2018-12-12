@@ -151,8 +151,7 @@ class WP_Auto_Links_Filter
 
         foreach ($active_types as $type) {
             if (!$this->links = $this->helper->$type) {
-                $this->links = WP_Auto_Links_Builder::$type();
-                // continue;
+                continue;
             }
 
             $strpos = $this->case_sensitive ? 'stripos' : 'strpos';
