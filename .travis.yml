@@ -4,7 +4,36 @@ php:
   - 7.3
   - nightly
 
-matrix:
+install:
+  - composer install
+
+script:
+  - composer test
+
+jobs:
+  include:
+    - php: 7.2
+    - php: 7.3
+    - php: nightly
+    - stage: deploy
+      php: 7.3
+      on:
+        tags: true
+      install:
+        - composer install --no-dev --optimize-autoloader
+      script:
+        - svn co http://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
+        - rsync -Rrd --delete --exclude 'release.sh' --exclude ".*" ./ /tmp/wordpress-wp-auto-links-plugin-svn/trunk/
+        - cd /tmp/wordpress-wp-auto-links-plugin-svn/
+        - svn status | grep '^!' | awk '{print $2}' | xargs svn delete
+        - svn add --force * --auto-props --parents --depth infinity -q
+        - svn commit -m "Syncing v${version} from GitHub"
+        - mkdir /tmp/wordpress-wp-auto-links-plugin-svn/tags/$(git describe --abbrev=0 --tags)
+        - svn add /tmp/wordpress-wp-auto-links-plugin-svn/tags/$(git describe --abbrev=0 --tags)
+        - svn commit -m "Creating tag for v$(git describe --abbrev=0 --tags)"
+        - svn cp --parents trunk/* tags/${version}
+        - svn commit -m "Tagging v${version}"
+    
   fast_finish: true
   allow_failures:
     - php: nightly
@@ -13,9 +42,3 @@ cache:
   directories:
     - $HOME/.composer/cache
     - vendor
-
-install:
-  - composer install
-
-script:
-  - composer test
