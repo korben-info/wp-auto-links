@@ -2,13 +2,13 @@
 /*
 Plugin Name:        WP Auto Links
 Plugin URI:         https://github.com/LeoColomb/wp-auto-links
-Description:        Adds automatically internal and external links to list of keywords.
-Version:            1.0.0
+Description:        An inner links generator for WordPress
+Version:            1.1.0
 Author:             Léo Colombaro
 Author URI:         https://colombaro.fr/
 
-License:            MIT License
-License URI:        https://opensource.org/licenses/MIT
+License:            ISC License
+License URI:        https://opensource.org/licenses/ISC
 */
 
 // Exit if accessed directly
