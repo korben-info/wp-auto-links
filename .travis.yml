@@ -16,23 +16,26 @@ matrix:
     - php: nightly
 
 before_deploy:
-  - composer install --no-dev --optimize-autoloader
-  - svn co http://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
-  - rsync -Rrd --delete --exclude 'release.sh' --exclude ".*" ./ /tmp/wordpress-wp-auto-links-plugin-svn/trunk/
+  - export version=$(git describe --abbrev=0 --tags)
+  - git archive -o "/tmp/wp-auto-links-${version}.zip"
+  - cd /tmp/
+  - unzip -q -o "wp-auto-links-${version}.zip"
+  - cd "/tmp/wp-auto-links-${version}"
+  - composer install --no-dev --optimize-autoloader --quiet
+  - svn co -q https://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
+  - rsync -Rrd --delete ./ /tmp/wordpress-wp-auto-links-plugin-svn/trunk/
   - cd /tmp/wordpress-wp-auto-links-plugin-svn/
   - svn status | grep '^!' | awk '{print $2}' | xargs svn delete
   - svn add --force * --auto-props --parents --depth infinity -q
-  - svn commit -m "Syncing v${version} from GitHub"
-  - mkdir /tmp/wordpress-wp-auto-links-plugin-svn/tags/$(git describe --abbrev=0 --tags)
-  - svn add /tmp/wordpress-wp-auto-links-plugin-svn/tags/$(git describe --abbrev=0 --tags)
-  - svn commit -m "Creating tag for v$(git describe --abbrev=0 --tags)"
+  - mkdir /tmp/wordpress-wp-auto-links-plugin-svn/tags/$version
+  - svn add /tmp/wordpress-wp-auto-links-plugin-svn/tags/$version
   - svn cp --parents trunk/* tags/${version}
-  - svn commit -m "Tagging v${version}"
 deploy:
   provider: script
-  script: echo 'Deploy!'
+  script: svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "v${version}"
   on:
     tags: true
+    php: 7.2
 
 cache:
   directories:
