@@ -16,9 +16,7 @@ matrix:
     - php: nightly
 
 before_deploy:
-  - git archive -o "/tmp/wp-auto-links-${TRAVIS_TAG}.zip" "${TRAVIS_TAG}"
-  - cd /tmp/
-  - unzip -q -o "wp-auto-links-${TRAVIS_TAG}.zip"
+  - git archive --format=tar --prefix="wp-auto-links-${TRAVIS_TAG}/" "${TRAVIS_TAG}" | (cd /tmp/ && tar xf -)
   - cd "/tmp/wp-auto-links-${TRAVIS_TAG}"
   - composer install --no-dev --optimize-autoloader --quiet
   - svn co -q https://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
