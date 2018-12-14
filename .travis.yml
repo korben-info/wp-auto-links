@@ -19,19 +19,18 @@ before_deploy:
   - git archive --format=tar --prefix="wp-auto-links-${TRAVIS_TAG}/" "${TRAVIS_TAG}" | (cd /tmp/ && tar xf -)
   - cd "/tmp/wp-auto-links-${TRAVIS_TAG}"
   - composer install --no-dev --optimize-autoloader
-  - cd -
+  - svn co https://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
+  - rsync -Rrd --delete "/tmp/wp-auto-links-${TRAVIS_TAG}" /tmp/wordpress-wp-auto-links-plugin-svn/trunk/
+  - cd /tmp/wordpress-wp-auto-links-plugin-svn/
+  - svn status | grep '^!' | awk '{print $2}' | xargs -I x svn rm --force x@
+  - svn add --force * --auto-props --parents --depth infinity
+  - mkdir /tmp/wordpress-wp-auto-links-plugin-svn/tags/${TRAVIS_TAG}
+  - svn add /tmp/wordpress-wp-auto-links-plugin-svn/tags/${TRAVIS_TAG}
+  - svn cp --parents trunk/* tags/${TRAVIS_TAG}
 deploy:
   provider: script
-  script:
-    - svn co https://plugins.svn.wordpress.org/wp-auto-links/ /tmp/wordpress-wp-auto-links-plugin-svn
-    - rsync -Rrd --delete "/tmp/wp-auto-links-${TRAVIS_TAG}" /tmp/wordpress-wp-auto-links-plugin-svn/trunk/
-    - cd /tmp/wordpress-wp-auto-links-plugin-svn/
-    - svn status | grep '^!' | awk '{print $2}' | xargs -I x svn rm --force x@
-    - svn add --force * --auto-props --parents --depth infinity
-    - mkdir /tmp/wordpress-wp-auto-links-plugin-svn/tags/${TRAVIS_TAG}
-    - svn add /tmp/wordpress-wp-auto-links-plugin-svn/tags/${TRAVIS_TAG}
-    - svn cp --parents trunk/* tags/${TRAVIS_TAG}
-    - svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "v${TRAVIS_TAG}"
+  skip_cleanup: true
+  script: svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "v${TRAVIS_TAG}"
   on:
     tags: true
     php: 7.3
