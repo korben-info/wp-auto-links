@@ -19,6 +19,7 @@ before_deploy:
   - git archive --format=tar --prefix="wp-auto-links-${TRAVIS_TAG}/" "${TRAVIS_TAG}" | (cd /tmp/ && tar xf -)
   - cd "/tmp/wp-auto-links-${TRAVIS_TAG}"
   - composer install --no-dev --optimize-autoloader
+  - cd -
 deploy:
   provider: script
   script:
