@@ -30,7 +30,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "v${TRAVIS_TAG}"
+  script: svn ci --no-auth-cache --username "${WP_USERNAME}" --password "${WP_PASSWORD}" -m "v${TRAVIS_TAG}"
   on:
     tags: true
     php: 7.3
