@@ -257,6 +257,16 @@ class WP_Auto_Links_Helper
     }
 
     /**
+     * @param mixed $value
+     * @param int $null
+     * @return int
+     */
+    public static function option_integer($value, int $null = 0): int
+    {
+        return (is_numeric($value) && $value > 0) ? (int) $value : $null;
+    }
+
+    /**
      * Instantiate the filter.
      *
      * @param string $text
