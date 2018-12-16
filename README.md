@@ -3,24 +3,24 @@
 > An inner links generator for WordPress
 
 [![Build Status](https://travis-ci.com/LeoColomb/wp-auto-links.svg?branch=master)](https://travis-ci.com/LeoColomb/wp-auto-links)
+[![WordPress Plugins](https://img.shields.io/wordpress/plugin/v/wp-auto-links.svg)](https://wordpress.org/plugins/wp-auto-links/)
 
 ## Features
 
-* Adds internal and external links into post and page
-  * Based on custom keywords
-  * Based on posts
-  * Based on pages
-  * Based on categories
-  * Based on tags
+* Adds internal and external links into post and page, based on different sources:
+  * Custom keywords
+  * Posts
+  * Pages
+  * Categories
+  * Tags
 * Provides simple and standard interfaces
   * Clean & clear admin page
   * Useful CLI commands
-* Respect web standards
+* Respect PHP, web and basic security standards
 * Uses latest technologies to reduce load impact
   * PHP 7.2+ (⚠ **requirement**)
   * WordPress 5.0+ (⚠ **requirement**)
   * Object Cache handler (⚠ **requirement**)
-  * Cron
 
 ## Installation
 
