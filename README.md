@@ -3,6 +3,7 @@
 > An inner links generator for WordPress
 
 [![Build Status](https://travis-ci.com/LeoColomb/wp-auto-links.svg?branch=master)](https://travis-ci.com/LeoColomb/wp-auto-links)
+[![Packagist](https://img.shields.io/packagist/v/LeoColomb/wp-auto-links.svg)](https://packagist.org/packages/LeoColomb/wp-auto-links)
 [![WordPress Plugins](https://img.shields.io/wordpress/plugin/v/wp-auto-links.svg)](https://wordpress.org/plugins/wp-auto-links/)
 
 ## Features
@@ -24,9 +25,12 @@
 
 ## Installation
 
-```bash
-$ composer require leocolomb/wp-auto-links
-```
+* Via [Composer](https://getcomposer.org/) (recommended)
+  ```bash
+  composer require leocolomb/wp-auto-links
+  ```
+
+* Via [WordPress Plugins](https://wordpress.org/plugins/wp-auto-links/)
 
 ## License
 
