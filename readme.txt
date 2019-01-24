@@ -3,7 +3,7 @@ Contributors: leocolomb
 Donate link: https://www.patreon.com/LeoColomb
 Tags: auto links, seo, links, categories, pages, posts, tags
 Requires at least: 5.0
-Tested up to: 5.0.1
+Tested up to: 5.0.3
 Requires PHP: 7.2
 Stable tag: trunk
 License: ISC
@@ -25,9 +25,9 @@ The plugin provides simple and standard interfaces:
 
 * Clean & clear admin page that allow highly customizable usage
 * Useful CLI commands
-* Respect PHP, web and basic security standards
+* Respect PHP standards, web standards and security standards
 
-Low load impact in mind, some hard requirements are requested:
+Low load impact in mind, some requirements are requested:
 
 * PHP 7.2+ (⚠ requirement)
 * WordPress 5.0+ (⚠ requirement)
@@ -59,18 +59,18 @@ composer require leocolomb/wp-auto-links
 = Amazing! How to support your work? =
 
 Thanks!
-First of all you can contribute on [the GitHub repository]https://github.com/LeoColomb/wp-auto-links).
+First of all you can contribute on [the GitHub repository](https://github.com/LeoColomb/wp-auto-links).
 If you prefer make a donation, [please see my Patreon page](https://www.patreon.com/LeoColomb)!
 
 = My system runs an older version of a software specified in the plugin requirements. =
 
-These strong requirements are required (of course) to ensure the plugin is working efficiently.
+These strong requirements are required to ensure the plugin is working efficiently.
 If the requirements are not satisfied, the plugin may not work as expected.
 
 = The plugin seems to work but no link are pushed on the content. =
 
 Check your Object Cache handler.
-A valid Object Cache handler is needed and required to manage data.
+A valid Object Cache handler is required to manage data.
 
 == Screenshots ==
 
