@@ -253,7 +253,7 @@ class WP_Auto_Links_Helper
      */
     public function show_options()
     {
-        include dirname(__DIR__).'/templates/admin.php';
+        include dirname(__DIR__) . '/templates/admin.php';
     }
 
     /**
