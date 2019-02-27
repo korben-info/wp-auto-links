@@ -9,7 +9,7 @@
     "auto-linker",
     "generator"
   ],
-  "homepage": "https://github.com/LeoColomb/wp-auto-links/",
+  "homepage": "https://github.com/LeoColomb/wp-auto-links",
   "license": "MIT",
   "require": {
     "php": ">=7.2",
