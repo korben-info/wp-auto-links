@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:        WP Auto Links
+Plugin Name:        Auto Links
 Plugin URI:         https://github.com/LeoColomb/wp-auto-links
 Description:        An inner links generator for WordPress
 Version:            1.2.4
