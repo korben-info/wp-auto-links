@@ -74,11 +74,11 @@ A valid Object Cache handler is required to manage data.
 
 == Screenshots ==
 
-1. The plugin admin interface.
+1. Auto Links for WordPress admin interface.
 
 == Changelog ==
 
-[The changelog is available on GitHub](https://github.com/LeoColomb/wp-auto-links/releases).
+[Checkout the complete changelog here](https://github.com/LeoColomb/wp-auto-links/releases).
 
 == Upgrade Notice ==
 

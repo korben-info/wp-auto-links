@@ -6,7 +6,8 @@
 [![Packagist](https://img.shields.io/packagist/v/LeoColomb/wp-auto-links.svg)](https://packagist.org/packages/LeoColomb/wp-auto-links)
 [![WordPress Plugins](https://img.shields.io/wordpress/plugin/v/wp-auto-links.svg)](https://wordpress.org/plugins/wp-auto-links/)
 
-## Features
+
+## Description
 
 * Adds internal and external links into post and page, based on different sources:
   * Custom keywords
@@ -23,6 +24,7 @@
   * WordPress 5.0+ (⚠ **requirement**)
   * Object Cache handler (⚠ **requirement**)
 
+
 ## Installation
 
 * Via [Composer](https://getcomposer.org/) (recommended)
@@ -31,6 +33,7 @@
   ```
 
 * Via [WordPress Plugins](https://wordpress.org/plugins/wp-auto-links/)
+
 
 ## License
 
