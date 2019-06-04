@@ -15,6 +15,10 @@ action "Tag" {
 
 action "WordPress Plugin Deploy" {
   needs = ["Tag", "Composer Production"]
-  uses = "10up/actions-wordpress/dotorg-plugin-deploy@master"
-  secrets = ["SVN_PASSWORD", "SVN_USERNAME"]
+  uses = "10up/actions-wordpress/dotorg-plugin-deploy@4f0a053cb997f281b62963122fc0a5de18fc1aa9"
+  secrets = [
+    "SVN_PASSWORD",
+    "SVN_USERNAME",
+    "GITHUB_TOKEN",
+  ]
 }
