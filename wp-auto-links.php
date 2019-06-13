@@ -1,15 +1,15 @@
 <?php
-/*
-Plugin Name:        Auto Links
-Plugin URI:         https://github.com/LeoColomb/wp-auto-links
-Description:        An inner links generator for WordPress
-Version:            1.2.6
-Author:             Léo Colombaro
-Author URI:         https://colombaro.fr/
 
-License:            ISC License
-License URI:        https://opensource.org/licenses/ISC
-*/
+/**
+ * Plugin Name:       Auto Links
+ * Plugin URI:        https://github.com/LeoColomb/wp-auto-links
+ * Description:       An inner links generator for WordPress
+ * Version:           1.2.6
+ * Author:            Léo Colombaro
+ * Author URI:        https://colombaro.fr/
+ * License:           ISC License
+ * License URI:       https://opensource.org/licenses/ISC
+ */
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
