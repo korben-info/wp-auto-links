@@ -4,7 +4,7 @@
  * Plugin Name:       Auto Links
  * Plugin URI:        https://github.com/LeoColomb/wp-auto-links
  * Description:       An inner links generator for WordPress
- * Version:           1.2.6
+ * Version:           1.3.0
  * Author:            Léo Colombaro
  * Author URI:        https://colombaro.fr/
  * License:           ISC License
