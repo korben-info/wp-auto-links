@@ -229,6 +229,7 @@ class WP_Auto_Links_Helper
             'max_single_keyword' => 1,
             'max_single_url' => 1,
             'min_term_usage' => 1,
+            'min_post_age' => 0,
 
             // Ignore
             'keyword_ignore' => ['about'],
@@ -300,12 +301,18 @@ class WP_Auto_Links_Helper
             return false;
         }
 
-        // Exclude posts and/or pages
         $post_type = get_post_type();
-        if ($post_type === 'post' && !$this->get_option('on_post')) {
-            return false;
-        }
-        if ($post_type === 'page' && !$this->get_option('on_page')) {
+        // Exclude posts and/or pages
+        if ($post_type === 'post') {
+            if (!$this->get_option('on_post')) {
+                return false;
+            }
+            // Exclude too young posts
+            if ($this->get_option('min_post_age') > 0 &&
+                (time() - get_post_time() < $this->get_option('min_post_age') * (24 * 60 * 60))) {
+                return false;
+            }
+        } else if ($post_type === 'page' && !$this->get_option('on_page')) {
             return false;
         }
 

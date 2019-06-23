@@ -39,6 +39,7 @@ $integer_options = [
     'max_single_keyword',
     'max_single_url',
     'min_term_usage',
+    'min_post_age',
 ];
 
 if (isset($_POST['submitted'])) {
@@ -79,6 +80,7 @@ $options['max_links'] = $helper::option_integer($options['max_links']);
 $options['max_single_keyword'] = $helper::option_integer($options['max_single_keyword'], -1);
 $options['max_single_url'] = $helper::option_integer($options['max_single_url']);
 $options['min_term_usage'] = $helper::option_integer($options['min_term_usage'], 1);
+$options['min_post_age'] = $helper::option_integer($options['min_post_age']);
 
 ?>
 
@@ -346,6 +348,19 @@ $options['min_term_usage'] = $helper::option_integer($options['min_term_usage'],
                         <?php _e('Limit number of same URLs the plugin will link to. Works only when Max Keyword Links above is set to 1. Set to 0 for no limit.', $helper::DOMAIN); ?>
                     </p>
                 </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="min_post_age">
+                    <?php _e('Min post age', $helper::DOMAIN); ?>
+                </label>
+              </th>
+              <td>
+                <input type="number" name="min_post_age" id="min_post_age" size="2" value="<?= $options['min_post_age']; ?>"/>
+                <p class="description">
+                    <?php _e('Limit linking on posts older than this minimum age. Value in days', $helper::DOMAIN); ?>
+                </p>
+              </td>
             </tr>
             <tr>
                 <th><?php _e('Case sensitive', $helper::DOMAIN); ?></th>
