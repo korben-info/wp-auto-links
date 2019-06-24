@@ -246,7 +246,7 @@ class WP_Auto_Links_Helper
      */
     public function get_option(string $name)
     {
-        return $this->options[$name];
+        return $this->options[$name] ?? self::get_default_options()[$name];
     }
 
     /**
