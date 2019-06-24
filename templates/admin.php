@@ -392,6 +392,6 @@ $options['min_post_age'] = $helper::option_integer($options['min_post_age']);
             </tbody>
         </table>
 
-        <?php submit_button(__('Save Changes'), 'primary'); ?>
+        <?php submit_button(); ?>
     </form>
 </div>
