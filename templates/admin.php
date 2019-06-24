@@ -87,7 +87,7 @@ $options['min_post_age'] = $helper::option_integer($options['min_post_age']);
 <div class="wrap">
     <h1>Auto Links</h1>
 
-    <form method="post" action="options.php">
+    <form method="post" action="<?= $_SERVER['REQUEST_URI']; ?>">
         <input type="hidden" name="option_page" value="discussion">
         <input type="hidden" name="action" value="update">
         <input type="hidden" id="_wpnonce" name="_wpnonce" value="<?= wp_create_nonce($helper::DOMAIN); ?>"/>
