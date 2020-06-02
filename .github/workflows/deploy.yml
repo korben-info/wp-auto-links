@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: pxgamer/composer-action@v2.0.1
+    - uses: pxgamer/composer-action@v2.1.0
       with:
         command: install --no-dev --optimize-autoloader --prefer-dist
     - name: WordPress Plugin Deploy
