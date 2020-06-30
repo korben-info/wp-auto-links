@@ -308,8 +308,10 @@ class WP_Auto_Links_Helper
                 return false;
             }
             // Exclude too young posts
-            if ($this->get_option('min_post_age') > 0 &&
-                (time() - get_post_time() < $this->get_option('min_post_age') * (24 * 60 * 60))) {
+            if (
+                $this->get_option('min_post_age') > 0 &&
+                (time() - get_post_time() < $this->get_option('min_post_age') * (24 * 60 * 60))
+            ) {
                 return false;
             }
         } else if ($post_type === 'page' && !$this->get_option('on_page')) {
