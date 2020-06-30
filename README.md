@@ -2,7 +2,7 @@
 
 > An inner links generator for WordPress
 
-[![Build Status](https://travis-ci.com/LeoColomb/wp-auto-links.svg?branch=master)](https://travis-ci.com/LeoColomb/wp-auto-links)
+[![Build Status](https://github.com/LeoColomb/wp-auto-links/workflows/PHP%20CI/badge.svg)](https://github.com/LeoColomb/wp-auto-links/actions?query=workflow%3APHP%20CI)
 [![Packagist](https://img.shields.io/packagist/v/LeoColomb/wp-auto-links.svg)](https://packagist.org/packages/LeoColomb/wp-auto-links)
 [![WordPress Plugins](https://img.shields.io/wordpress/plugin/v/wp-auto-links.svg)](https://wordpress.org/plugins/wp-auto-links/)
 
