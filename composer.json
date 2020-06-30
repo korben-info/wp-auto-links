@@ -24,7 +24,7 @@
     ]
   },
   "scripts": {
-    "test": [
+    "lint": [
       "phpcs"
     ]
   },
