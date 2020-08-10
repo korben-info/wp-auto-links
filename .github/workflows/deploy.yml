@@ -10,7 +10,7 @@ jobs:
     name: Push to the directory
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.1
+    - uses: actions/checkout@v2.3.2
     - uses: pxgamer/composer-action@v2.1.0
       with:
         command: install --no-dev --optimize-autoloader --prefer-dist
