@@ -3,7 +3,7 @@ Contributors: leocolomb
 Donate link: https://www.patreon.com/LeoColomb
 Tags: auto links, seo, links, categories, pages, posts, tags
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 6.0
 Requires PHP: 7.2
 Stable tag: trunk
 License: ISC
